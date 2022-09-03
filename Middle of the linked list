@@ -1,0 +1,46 @@
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode p = head;
+        int len = 0;
+        while(p != null){
+            len++;
+            p = p.next;
+        }
+        int mid = 0;
+        int count = 1;
+        if(len%2 == 0){
+            mid = (len/2) +1;
+            while(count < mid){
+                count++;
+                head = head.next;
+            }
+        }else{
+            mid = (int)Math.ceil(len/2);
+            while(count <= mid){
+                count++;
+                head = head.next;
+            }
+        }
+
+        
+        
+        return head;
+        
+    }
+}
+
+//using slow and fast pointers (optimal approach)
+
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head; 
+        
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        return slow;
+    }
+}
